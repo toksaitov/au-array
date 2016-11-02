@@ -7,7 +7,14 @@
 
 void test_au_array_create()
 {
-    assert(false);
+    puts("Test we can create an array");
+
+    au_array *array = au_array_create();
+
+    assert(array);
+    assert(array->length == 0);
+    assert(array->element_size == 1);
+    assert(array->elements == NULL);
 }
 
 void test_au_array_create_of_length()

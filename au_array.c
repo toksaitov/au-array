@@ -7,7 +7,16 @@
 
 au_array* au_array_create()
 {
-    return NULL;
+    au_array *array =
+        malloc(sizeof(au_array));
+
+    if (array) {
+        array->length = 0;
+        array->element_size = 1;
+        array->elements = NULL;
+    }
+
+    return array;
 }
 
 au_array* au_array_create_of_length(size_t count, size_t size)
@@ -15,7 +24,7 @@ au_array* au_array_create_of_length(size_t count, size_t size)
     return NULL;
 }
 
-au_array* au_array_create_with_array(au_array array)
+au_array* au_array_create_with_array(au_array *array)
 {
     return NULL;
 }
