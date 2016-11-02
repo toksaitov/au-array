@@ -30,7 +30,7 @@ au_array* au_array_create_of_length(size_t count, size_t size);
 /*
  * Creates a copy from another `array`
  */
-au_array* au_array_create_with_array(au_array array);
+au_array* au_array_create_with_array(au_array *array);
 
 /*
  * Creates an array from a `buffer` with `count` elements of `size`
