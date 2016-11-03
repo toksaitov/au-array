@@ -68,4 +68,5 @@ typedef struct _au_array
 ## Contributors
 
 * Dmitrii Toksaitov
+* Grigorii Derzhanskii
 
