@@ -19,7 +19,16 @@ void test_au_array_create()
 
 void test_au_array_create_of_length()
 {
-    assert(false);
+    puts("Test: create an array of a certain length.");
+    
+    au_array* array =  au_array_create_of_length(1, sizeof(char));
+    
+    assert(array);
+    assert(array->length == 1);
+    assert(array->element_size = sizeof(char));
+    assert(array->elements != NULL);
+    
+    au_array_free(array);
 }
 
 void test_au_array_create_with_array()
@@ -34,7 +43,13 @@ void test_au_array_create_with_buffer()
 
 void test_au_array_free()
 {
-    assert(false);
+    puts("Test: free an array.");
+    
+    au_array *array = au_array_create_of_length(1, sizeof(char));
+    
+    assert(array);
+    
+    au_array_free(array);
 }
 
 void test_au_array_free_with_elements()
