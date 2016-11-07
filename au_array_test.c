@@ -7,12 +7,23 @@
 
 void test_au_array_create()
 {
-    assert(false);
+    au_array * array = au_array_create();
+    assert(array);
+    assert(array->length == 0);
+    assert(array->element_size == 1);
+    assert(array->elements == NULL);
 }
 
 void test_au_array_create_of_length()
 {
-    assert(false);
+    au_array * array = au_array_create_of_length(5, sizeof(int));
+    assert(array);
+    assert(array->length == 5);
+    assert(array->element_size == sizeof(int));
+    assert(array->elements);
+      
+    array->elements[3] = 1234567890;
+    assert(array->elements[3] == 1234567890);
 }
 
 void test_au_array_create_with_array()
@@ -67,7 +78,10 @@ void test_au_array_first()
 
 void test_au_array_last()
 {
-    assert(false);
+    au_array * array = au_array_create_of_length(5, sizeof(int));
+
+    array->elements[4] = 1234567890;
+    assert(au_array_last(array) == 1234567890);
 }
 
 void test_au_array_get()
@@ -79,21 +93,8 @@ int main(int argc, char **argv)
 {
     test_au_array_create();
     test_au_array_create_of_length();
-    test_au_array_create_with_array();
-    test_au_array_create_with_buffer();
 
-    test_au_array_free();
-    test_au_array_free_with_elements();
-    test_au_array_free_with_element_handler();
-
-    test_au_array_is_empty();
-    test_au_array_length();
-    test_au_array_size();
-    test_au_array_element_size();
-
-    test_au_array_first();
     test_au_array_last();
-    test_au_array_get();
 
     return 0;
 }
