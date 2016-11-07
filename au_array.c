@@ -19,7 +19,7 @@ au_array* au_array_create_of_length(size_t count, size_t size)
     au_array * array = malloc(sizeof(au_array));
     array->length = count;
     array->element_size = size;
-    array->elements = malloc(size * count);
+    array->elements = malloc(count * sizeof(void *));
     return array;
 }
 

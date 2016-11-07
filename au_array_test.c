@@ -22,8 +22,9 @@ void test_au_array_create_of_length()
     assert(array->element_size == sizeof(int));
     assert(array->elements);
       
-    array->elements[3] = 1234567890;
-    assert(array->elements[3] == 1234567890);
+    int number = 1234567890;
+    array->elements[3] = &number;
+    assert(*(int *)(array->elements[3]) == number);
 }
 
 void test_au_array_create_with_array()
@@ -79,9 +80,9 @@ void test_au_array_first()
 void test_au_array_last()
 {
     au_array * array = au_array_create_of_length(5, sizeof(int));
-
-    array->elements[4] = 1234567890;
-    assert(au_array_last(array) == 1234567890);
+    int number = 1234567890;
+    array->elements[4] = &number;
+    assert(*(int *)au_array_last(array) == number);
 }
 
 void test_au_array_get()
