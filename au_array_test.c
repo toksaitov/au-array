@@ -64,17 +64,29 @@ void test_au_array_free_with_element_handler()
 
 void test_au_array_is_empty()
 {
-    assert(false);
+    puts("Test: We can check if the array is empty.");
+
+    au_array *array = au_array_create_of_length(1, sizeof(char));
+
+    assert(au_array_is_empty(array) == false);
 }
 
 void test_au_array_length()
 {
-    assert(false);
+    puts("Test: We can check the length of an array.");
+
+    au_array *array = au_array_create_of_length(1, sizeof(char));
+
+    assert(au_array_length(array) == 1);    
 }
 
 void test_au_array_size()
 {
-    assert(false);
+    puts("Test: We can check the  size of an  array.");
+
+    au_array *array = au_array_create_of_length(1, sizeof(char));
+
+    assert(au_array_size(array) == sizeof(char));
 }
 
 void test_au_array_element_size()
