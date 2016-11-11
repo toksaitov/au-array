@@ -7,9 +7,7 @@
 
 au_array* au_array_create()
 {
-    au_array *array =
-        malloc(sizeof(au_array));
-
+    au_array *array = (au_array *) malloc(sizeof(au_array));
     if (array) {
         array->length = 0;
         array->element_size = 1;
@@ -22,10 +20,12 @@ au_array* au_array_create()
 au_array* au_array_create_of_length(size_t count, size_t size)
 {
     au_array *array = (au_array *) malloc(sizeof(au_array));
-    array->elements = malloc(size * count);
-    array->element_size = size;
-    array->length = count;
-    
+    if (array) {
+        array->elements = malloc(size * count);
+        array->element_size = size;
+        array->length = count;
+    }
+
     return array;
 }
 
