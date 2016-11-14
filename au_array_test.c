@@ -5,25 +5,30 @@
 
 #include "au_array.h"
 
-au_array myArray;
-
 void test_au_array_create()
 {
-	puts("Test: create an array");
-	
-	au_array *array = au_array_create();
-    
-	assert(array);
-	assert(array->length == 0);
-	assert(array->element_size == 1);
-	assert(array->elements == NULL);
-	
-	puts("Success\n");
-	}
+    puts("Test we can create an array");
+
+    au_array *array = au_array_create();
+
+    assert(array);
+    assert(array->length == 0);
+    assert(array->element_size == 1);
+    assert(array->elements == NULL);
+}
 
 void test_au_array_create_of_length()
 {
-    assert(false);
+    puts("Test: create an array of a certain length.");
+    
+    au_array* array =  au_array_create_of_length(1, sizeof(char));
+    
+    assert(array);
+    assert(array->length == 1);
+    assert(array->element_size = sizeof(char));
+    assert(array->elements != NULL);
+    
+    au_array_free(array);
 }
 
 void test_au_array_create_with_array()
@@ -38,7 +43,13 @@ void test_au_array_create_with_buffer()
 
 void test_au_array_free()
 {
-    assert(false);
+    puts("Test: free an array.");
+    
+    au_array *array = au_array_create_of_length(1, sizeof(char));
+    
+    assert(array);
+    
+    au_array_free(array);
 }
 
 void test_au_array_free_with_elements()
@@ -53,17 +64,29 @@ void test_au_array_free_with_element_handler()
 
 void test_au_array_is_empty()
 {
-    assert(false);
+    puts("Test: We can check if the array is empty.");
+
+    au_array *array = au_array_create_of_length(1, sizeof(char));
+
+    assert(au_array_is_empty(array) == false);
 }
 
 void test_au_array_length()
 {
-    assert(false);
+    puts("Test: We can check the length of an array.");
+
+    au_array *array = au_array_create_of_length(1, sizeof(char));
+
+    assert(au_array_length(array) == 1);    
 }
 
 void test_au_array_size()
 {
-    assert(false);
+    puts("Test: We can check the  size of an  array.");
+
+    au_array *array = au_array_create_of_length(1, sizeof(char));
+
+    assert(au_array_size(array) == sizeof(char));
 }
 
 void test_au_array_element_size()
@@ -90,9 +113,9 @@ void test_au_array_get()
 		array->elements[i] = i + 1;
 	}
 	
-	assert(au_array_get(array, 1) == 2);
-	assert(au_array_get(array, 2) == 3);
-	assert(au_array_get(array, 6) == "?");
+	assert(*((char *)au_array_get(array, 1)) == 2);
+	assert(*((char *)au_array_get(array, 2)) == 3);
+	assert(*((char *)au_array_get(array, 6)) == NULL);
 }
 
 int main(int argc, char **argv)

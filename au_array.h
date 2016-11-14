@@ -10,7 +10,7 @@ typedef struct _au_array
 {
     size_t length;       /* number of elements in the array    */
     size_t element_size; /* size of every element in the array */
-    void **elements;     /* elements of the array              */
+    void *elements;      /* elements of the array              */
 } au_array;
 
 typedef void (*au_array_element_handler)(void *element);
@@ -96,4 +96,3 @@ void *au_array_last(au_array *array);
 void *au_array_get(au_array *array, size_t index);
 
 #endif
-
