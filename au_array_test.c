@@ -5,10 +5,21 @@
 
 #include "au_array.h"
 
+au_array myArray;
+
 void test_au_array_create()
 {
-    assert(false);
-}
+	puts("Test: create an array");
+	
+	au_array *array = au_array_create();
+    
+	assert(array);
+	assert(array->length == 0);
+	assert(array->element_size == 1);
+	assert(array->elements == NULL);
+	
+	puts("Success\n");
+	}
 
 void test_au_array_create_of_length()
 {
@@ -72,7 +83,16 @@ void test_au_array_last()
 
 void test_au_array_get()
 {
-    assert(false);
+	int i;
+	au_array *array = au_array_create_of_length(5, 1);
+	
+	for (i = 0; i < 5; i = i + 1) {
+		array->elements[i] = i + 1;
+	}
+	
+	assert(au_array_get(array, 1) == 2);
+	assert(au_array_get(array, 2) == 3);
+	assert(au_array_get(array, 6) == "?");
 }
 
 int main(int argc, char **argv)
@@ -97,4 +117,3 @@ int main(int argc, char **argv)
 
     return 0;
 }
-

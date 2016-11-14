@@ -7,7 +7,15 @@
 
 au_array* au_array_create()
 {
-    return NULL;
+    au_array *array = malloc(sizeof(au_array));
+	
+	if (array) {
+		array->length = 0;
+		array->element_size = 1;
+		array->elements = NULL;
+		
+		return array;
+	}
 }
 
 au_array* au_array_create_of_length(size_t count, size_t size)
@@ -15,7 +23,7 @@ au_array* au_array_create_of_length(size_t count, size_t size)
     return NULL;
 }
 
-au_array* au_array_create_with_array(au_array array)
+au_array* au_array_create_with_array(au_array *array)
 {
     return NULL;
 }
@@ -78,6 +86,12 @@ void *au_array_last(au_array *array)
 
 void *au_array_get(au_array *array, size_t index)
 {
-    return NULL;
+	// first to check if array exists
+	if (array && array->length > index) {
+		return array->elements[index * array->element_size];
+	}
+	else {
+		puts("Index is out of bounds of array\n");
+		exit(1);
+	}
 }
-
