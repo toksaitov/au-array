@@ -106,7 +106,16 @@ void test_au_array_last()
 
 void test_au_array_get()
 {
-    assert(false);
+	int i;
+	au_array *array = au_array_create_of_length(5, 1);
+	
+	for (i = 0; i < 5; i = i + 1) {
+		array->elements[i] = i + 1;
+	}
+	
+	assert(*((char *)au_array_get(array, 1)) == 2);
+	assert(*((char *)au_array_get(array, 2)) == 3);
+	assert(*((char *)au_array_get(array, 6)) == NULL);
 }
 
 int main(int argc, char **argv)
@@ -131,4 +140,3 @@ int main(int argc, char **argv)
 
     return 0;
 }
-
