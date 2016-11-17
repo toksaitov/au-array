@@ -19,13 +19,13 @@ void test_au_array_create()
 
 void test_au_array_create_of_length()
 {
-    puts("Test: create an array of a certain length.");
-    
-    au_array* array =  au_array_create_of_length(1, sizeof(char));
-    
+    puts("Test: create an array of certain length.");
+
+    au_array * array = au_array_create_of_length(1, sizeof(char));
+
     assert(array);
     assert(array->length == 1);
-    assert(array->element_size = sizeof(char));
+    assert(array->element_size == sizeof(char));
     assert(array->elements != NULL);
     
     au_array_free(array);
@@ -101,7 +101,12 @@ void test_au_array_first()
 
 void test_au_array_last()
 {
-    assert(false);
+    puts("Test: last element of an array");
+    au_array * array = au_array_create_of_length(5, sizeof(int));
+    int number = 1234567890;
+    *(int *)au_array_last(array) = number;
+    assert(au_array_last(NULL) == NULL);
+    assert(*(int *)au_array_last(array) == number);
 }
 
 void test_au_array_get()
@@ -113,21 +118,8 @@ int main(int argc, char **argv)
 {
     test_au_array_create();
     test_au_array_create_of_length();
-    test_au_array_create_with_array();
-    test_au_array_create_with_buffer();
 
-    test_au_array_free();
-    test_au_array_free_with_elements();
-    test_au_array_free_with_element_handler();
-
-    test_au_array_is_empty();
-    test_au_array_length();
-    test_au_array_size();
-    test_au_array_element_size();
-
-    test_au_array_first();
     test_au_array_last();
-    test_au_array_get();
 
     return 0;
 }

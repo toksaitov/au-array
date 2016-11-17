@@ -13,7 +13,6 @@ au_array* au_array_create()
         array->element_size = 1;
         array->elements = NULL;
     }
-
     return array;
 }
 
@@ -89,7 +88,11 @@ void *au_array_first(au_array *array)
 
 void *au_array_last(au_array *array)
 {
-    return NULL;
+    if (!array || array->length == 0) 
+    {
+	return NULL;
+    }
+    return &(array->elements[(array->length - 1) * array->element_size]);
 }
 
 void *au_array_get(au_array *array, size_t index)
