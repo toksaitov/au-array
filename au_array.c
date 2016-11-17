@@ -92,8 +92,7 @@ void *au_array_last(au_array *array)
     {
 	return NULL;
     }
-    char * tempArray = (char *)(array->elements);
-    return &(tempArray[(array->length - 1) * array->element_size]);
+    return &(array->elements[(array->length - 1) * array->element_size]);
 }
 
 void *au_array_get(au_array *array, size_t index)
