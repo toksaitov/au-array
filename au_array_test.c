@@ -19,15 +19,16 @@ void test_au_array_create()
 
 void test_au_array_create_of_length()
 {
-    au_array * array = au_array_create_of_length(5, sizeof(int));
+    puts("Test: create an array of certain length.");
+
+    au_array * array = au_array_create_of_length(1, sizeof(char));
+
     assert(array);
-    assert(array->length == 5);
-    assert(array->element_size == sizeof(int));
-    assert(array->elements);
-      
-    int number = 1234567890;
-    array->elements[3] = &number;
-    assert(*(int *)(array->elements[3]) == number);
+    assert(array->length == 1);
+    assert(array->element_size == sizeof(char));
+    assert(array->elements != NULL);
+    
+    au_array_free(array);
 }
 
 void test_au_array_create_with_array()
@@ -100,9 +101,10 @@ void test_au_array_first()
 
 void test_au_array_last()
 {
+    puts("Test: last element of an array");
     au_array * array = au_array_create_of_length(5, sizeof(int));
     int number = 1234567890;
-    array->elements[4] = &number;
+    *(int *)au_array_last(array) = number;
     assert(au_array_last(NULL) == NULL);
     assert(*(int *)au_array_last(array) == number);
 }
