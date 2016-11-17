@@ -10,7 +10,7 @@ typedef struct _au_array
 {
     size_t length;       /* number of elements in the array    */
     size_t element_size; /* size of every element in the array */
-    void **elements;     /* elements of the array              */
+    void *elements;      /* elements of the array              */
 } au_array;
 
 typedef void (*au_array_element_handler)(void *element);
@@ -30,7 +30,7 @@ au_array* au_array_create_of_length(size_t count, size_t size);
 /*
  * Creates a copy from another `array`
  */
-au_array* au_array_create_with_array(au_array array);
+au_array* au_array_create_with_array(au_array *array);
 
 /*
  * Creates an array from a `buffer` with `count` elements of `size`

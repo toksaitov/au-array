@@ -10,7 +10,7 @@ typedef struct _au_array
 {
     size_t length;       /* number of elements in the array    */
     size_t element_size; /* size of every element in the array */
-    void **elements;     /* elements of the array              */
+    void *elements;      /* elements of the array              */
 } au_array;
 ```
 
@@ -67,5 +67,7 @@ typedef struct _au_array
 
 ## Contributors
 
+* Grigorii Derzhanskii
+* Ruslan Dzhumakaliev
 * Dmitrii Toksaitov
 
