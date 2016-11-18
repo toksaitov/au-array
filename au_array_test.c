@@ -96,17 +96,50 @@ void test_au_array_element_size()
 
 void test_au_array_first()
 {
-    assert(false);
+    puts("Test: We can get first element of an array.");
+    
+    au_array *array = au_array_create_of_length(2, sizeof(char));
+    assert(array);
+    void *element1 = &array->elements[0];
+    void *element2 = &array->elements[1];
+    void * tmp1 = "something first";
+    void * tmp2 = "something second";
+    element1 = tmp1;
+    element2 = tmp2;
+    assert(au_array_first(array));
 }
 
 void test_au_array_last()
 {
-    assert(false);
+    puts("Test: We can get last element of an array.");
+    
+    au_array *array = au_array_create_of_length(2, sizeof(char));
+    assert(array);
+    void *element1 = &array->elements[0];
+    void *element2 = &array->elements[1];
+    void * tmp1 = "something first";
+    void * tmp2 = "something last";
+    element1 = tmp1;
+    element2 = tmp2;
+    assert(au_array_last(array));
 }
 
 void test_au_array_get()
 {
-    assert(false);
+    puts("Test: We can get an element of an array at any index.");
+    
+    au_array *array = au_array_create_of_length(3, sizeof(char));
+    assert(array);
+    void *element1 = &array->elements[0];
+    void *element2 = &array->elements[1];
+    void *element3 = &array->elements[2];
+    void * tmp = "something";
+    void * tmp2 = "something in middle";
+    element1 = tmp;
+    element2 = tmp2;
+    element3 = tmp;
+    size_t index = 1;
+    assert(au_array_get(array, index));
 }
 
 int main(int argc, char **argv)
