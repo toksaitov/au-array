@@ -128,7 +128,7 @@ void test_au_array_get()
 {
     puts("Test: We can get an element of an array at any index.");
     
-    au_array *array = au_array_create_of_length(2, sizeof(char));
+    au_array *array = au_array_create_of_length(3, sizeof(char));
     assert(array);
     void *element1 = &array->elements[0];
     void *element2 = &array->elements[1];
