@@ -84,7 +84,11 @@ size_t au_array_element_size(au_array *array)
 
 void *au_array_first(au_array *array)
 {
-    return NULL;
+    if(!array || array -> length == 0)
+	{
+		return NULL;
+	}
+	return &(array->elements[0]);
 }
 
 void *au_array_last(au_array *array)
