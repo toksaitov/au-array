@@ -96,7 +96,12 @@ void test_au_array_element_size()
 
 void test_au_array_first()
 {
-    assert(false);
+    puts("Test: We can check the first element of an array");
+    au_array * array = au_array_create_of_length(3, sizeof(int));
+    int number = 1248659347;
+    *(int *)au_array_first(array) = number;
+    assert(au_array_first(NULL) == NULL);
+    assert(*(int *)au_array_first(array) == number);
 }
 
 void test_au_array_last()
@@ -113,22 +118,15 @@ int main(int argc, char **argv)
 {
     test_au_array_create();
     test_au_array_create_of_length();
-    test_au_array_create_with_array();
-    test_au_array_create_with_buffer();
-
+       
     test_au_array_free();
-    test_au_array_free_with_elements();
-    test_au_array_free_with_element_handler();
 
     test_au_array_is_empty();
     test_au_array_length();
     test_au_array_size();
-    test_au_array_element_size();
-
+    
     test_au_array_first();
-    test_au_array_last();
-    test_au_array_get();
-
+    
     return 0;
 }
 
