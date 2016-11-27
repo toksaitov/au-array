@@ -96,10 +96,16 @@ void test_au_array_element_size()
 
 void test_au_array_first()
 {
-    puts("Test: We check first element of array");
-    au_array *array = au_array_create();
-    assert(array);
-    assert(au_array_first(array));
+   puts("Test: We check first element of array"); 
+   au_array *array = au_array_create_of_length(2, sizeof(char));
+   assert(array);
+   void *elem1 = &array->elem[0];
+   void *elem2 = &array->elem[1];
+   void * tmp1 = "12345";
+   void * tmp2 = "678910";
+   element1 = tmp1;
+   element2 = tmp2;
+   assert(au_array_first(array));
 }
 
 void test_au_array_last()
